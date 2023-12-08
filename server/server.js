@@ -151,15 +151,16 @@ app.get('/placesDetails/:id',async(req,res)=>{
     res.json(await NewPlace.findById(id))
 })
 
-app.get('/places',async(req,res)=>{
-    try{
-        const data=await NewPlace.find()
-        res.json(data)
-    }catch(error)
-    {
-        console.log(error)
-    }
-})
+app.get('/places', async (req, res) => {
+  try {
+    const data = await NewPlace.find();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching places:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 app.get('/mybookings', async (req, res) => {
     const token = req.cookies.token;
