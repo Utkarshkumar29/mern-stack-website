@@ -15,7 +15,7 @@ const fs=require('fs');
 const BookingModel = require('./models/booking');
 
 app.use(cors({
-    origin: ["https://mern-stack-website-frontend.vercel.app"],
+    origin: ["https://mern-stack-website-frontend.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true
 }));
