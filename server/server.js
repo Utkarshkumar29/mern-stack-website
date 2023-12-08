@@ -126,14 +126,6 @@ app.get('/myaccomendation', async (req, res) => {
 });
 
 
-
-        return res.json(data);
-    } catch (error) {
-        console.error('Error in /myaccomendation:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
 app.get('/placesDetails/:id',async(req,res)=>{
     const {id}=req.params
     res.json(await NewPlace.findById(id))
