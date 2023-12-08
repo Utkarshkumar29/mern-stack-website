@@ -114,27 +114,9 @@ app.get('/myaccomendation', async (req, res) => {
         const { id } = userData;
         const data = await NewPlace.find({ owner: id });
 
-        if (!data) {
+        if (!data || data.length === 0) {
             return res.status(404).json({ error: 'Data not found' });
         }
-        app.get('/myaccomendation', async (req, res) => {
-    const token = req.cookies.token;
-    if (!token) {
-        return res.status(401).json({ error: 'Unauthorized - Missing Token' });
-    }
-
-    try {
-        const userData = jwt.verify(token, jwtSecret);
-        const { id } = userData;
-        const data = await NewPlace.find({ owner: id });
-
-        if (!data) {
-            return res.status(404).json({ error: 'Data not found' });
-        }
-        if (data.length === 0) {
-            return res.status(404).json({ error: 'Data not found' });
-        }
-        
 
         return res.json(data);
     } catch (error) {
@@ -142,6 +124,7 @@ app.get('/myaccomendation', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 
         return res.json(data);
