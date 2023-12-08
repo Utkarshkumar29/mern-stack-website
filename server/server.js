@@ -27,7 +27,7 @@ app.use('/uploads',express.static(__dirname+'/'))
 
 require('dotenv').config();
 
-mongoose.connect(mongodb+srv://Airbnb:Airbnb@cluster0.tiglnj5.mongodb.net/test?retryWrites=true&w=majority, {
+mongoose.connect('mongodb+srv://Airbnb:Airbnb@cluster0.tiglnj5.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -35,6 +35,7 @@ mongoose.connect(mongodb+srv://Airbnb:Airbnb@cluster0.tiglnj5.mongodb.net/test?r
 }).catch((error) => {
     console.log(error);
 });
+
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
