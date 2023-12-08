@@ -14,6 +14,12 @@ const path = require('path');
 const fs=require('fs');
 const BookingModel = require('./models/booking');
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://mern-stack-website-frontend.vercel.app');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.use(cors(
     {
         origin:["https://mern-stack-website-api.vercel.app],
