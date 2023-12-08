@@ -67,25 +67,27 @@ app.post('/register', async (req, res) => {
 const jwtSecret = 'rickandmorty';
 
 app.post('/login', async (req, res) => {
-    const {email,password}=req.body
-    const userDocs=await Register.findOne({email})
-    if(userDocs){
-        const passOk=bcrypt.compareSync(password,userDocs.password)
-        if(passOk){
+    const { email, password } = req.body;
+    const userDocs = await Register.findOne({ email });
+
+    if (userDocs) {
+        const passOk = bcrypt.compareSync(password, userDocs.password);
+        if (passOk) {
             jwt.sign({
-                email:userDocs.email,
-                id:userDocs._id
-            },jwtSecret,{},(err,token)=>{
-                if(err) throw err
-                res.cookie('token',token).json(userDocs)
-            })
-        }else{
-            res.status(422).json('pass not ok')
+                email: userDocs.email,
+                id: userDocs._id
+            }, jwtSecret, {}, (err, token) => {
+                if (err) throw err;
+                res.cookie('token', token).json(userDocs);
+            });
+        } else {
+            return res.status(422).json('pass not ok');
         }
-    }else {
-        res.json('not found')
+    } else {
+        return res.status(404).json('not found');
     }
 });
+
 
 app.get('/profile', (req, res) => {
     const token = req.cookies.token;
