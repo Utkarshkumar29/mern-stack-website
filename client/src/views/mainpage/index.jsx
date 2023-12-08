@@ -8,7 +8,7 @@ const Main=()=>{
 
     const fetchPlaces=async()=>{
         try{
-            const response=await axios.get('/places')
+            const response=await axios.get('https://mern-stack-website-api.vercel.app/places')
             console.log(response.data)
             setplaces(response.data)
         }catch(error)
