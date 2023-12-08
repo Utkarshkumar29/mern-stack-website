@@ -27,14 +27,11 @@ app.use('/uploads',express.static(__dirname+'/'))
 
 require('dotenv').config();
 
-mongoose.connect('mongodb+srv://Airbnb:Airbnb@cluster0.tiglnj5.mongodb.net/', {
+mongoose.connect('mongodb+srv://Airbnb:Airbnb@cluster0.tiglnj5.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(() => {
-    console.log("MongoDB Connected");
-}).catch((error) => {
-    console.log(error);
 });
+
 
 
 
