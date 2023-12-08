@@ -37,6 +37,7 @@ mongoose.connect('mongodb+srv://Airbnb:Airbnb@cluster0.tiglnj5.mongodb.net/test?
 });
 
 
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
     res.json("Hello")
