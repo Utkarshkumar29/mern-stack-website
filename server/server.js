@@ -33,6 +33,7 @@ mongoose.connect(process.env.MongoDB_URL, {
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
+    res.json("Hello")
 });
 
 
