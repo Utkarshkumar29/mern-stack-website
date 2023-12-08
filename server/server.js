@@ -131,13 +131,13 @@ app.get('/placesDetails/:id',async(req,res)=>{
 app.get('/places', async (req, res) => {
   try {
     const data = await NewPlace.find();
-    res.json(data);
-    res.send(data);
+    res.json(data);  // <-- This line sends a response
   } catch (error) {
     console.error('Error fetching places:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 
 app.get('/mybookings', async (req, res) => {
